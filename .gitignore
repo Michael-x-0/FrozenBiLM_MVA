@@ -1,3 +1,4 @@
 chkpt
 *__pycache__/
 *ckpt.pth
+*best_model.pth
