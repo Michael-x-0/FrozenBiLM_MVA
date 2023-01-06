@@ -212,7 +212,17 @@ def build_mc_dataset(dataset_name, split, args, tokenizer):
             raise NotImplementedError
         subtitles_path = None
         features_path = args.star_features_path
-
+    elif dataset_name == "knowitvqa" :
+        if split == "train" :
+          csv_path = args.knowitvqa_train_csv_path
+        elif split == "val" :
+          csv_path = args.knowitvqa_val_csv_path
+        elif split == "test" :
+          csv_path = args.knowitvqa_test_csv_path
+        else :
+          raise NotImplementedError
+        subtitles_path = None #args.knowitvqa_subtitles_path
+        features_path = args.knowitvqa_features_path
     else:
         raise NotImplementedError
     return MC_Dataset(

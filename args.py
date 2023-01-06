@@ -16,7 +16,8 @@ name2folder = {
     "how2qa": "How2QA",
     "tvqa": "TVQA",
     "vqa": "VQA",
-    "star": "STAR"
+    "star": "STAR",
+    "knowitvqa" : "KnowIT-VQA"
 }
 
 
@@ -191,7 +192,7 @@ def get_args_parser():
         "--tgif_vocab_path",
         default=os.path.join(DATA_DIR, name2folder["tgif"], "vocab.json"),
     )
-
+    # STAR
     parser.add_argument(
         "--star_features_path",
         default=os.path.join(DATA_DIR, name2folder["star"], "clipvitl14.pth"),
@@ -250,6 +251,30 @@ def get_args_parser():
         "--tvqa_subtitles_path",
         default=os.path.join(DATA_DIR, name2folder["tvqa"], "subtitles.pkl"),
     )
+    # KnowIT-VQA
+    parser.add_argument(
+        "--knowitvqa_features_path",
+        default=os.path.join(DATA_DIR, name2folder["knowitvqa"], "knowitvqa_clipvitl14_features.pth"),
+    )
+    parser.add_argument(
+        "--knowitvqa_train_csv_path",
+        default=os.path.join(DATA_DIR, name2folder["knowitvqa"], "train.csv"),
+    )
+    parser.add_argument(
+        "--knowitvqa_val_csv_path",
+        default=os.path.join(DATA_DIR, name2folder["knowitvqa"], "val.csv"),
+    )
+    parser.add_argument(
+        "--knowitvqa_test_csv_path",
+        default=os.path.join(DATA_DIR, name2folder["knowitvqa"], "test.csv"),
+    )
+    #"""
+    parser.add_argument(
+        "--knowitvqa_subtitles_path",
+        default=os.path.join(DATA_DIR, name2folder["knowitvqa"], "subtitles.pkl"),
+    )
+    #"""
+
     parser.add_argument(
         "--vqa_features_path",
         default=os.path.join(DATA_DIR, name2folder["vqa"], "clipvitl14.pth"),
