@@ -221,7 +221,7 @@ def build_mc_dataset(dataset_name, split, args, tokenizer):
           csv_path = args.knowitvqa_test_csv_path
         else :
           raise NotImplementedError
-        subtitles_path = None #args.knowitvqa_subtitles_path
+        subtitles_path = args.knowitvqa_subtitles_path
         features_path = args.knowitvqa_features_path
     else:
         raise NotImplementedError
