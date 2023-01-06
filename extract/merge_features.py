@@ -4,6 +4,8 @@ import os
 import torch
 from tqdm import tqdm
 import pandas as pd
+import sys
+sys.path.append(os.path.realpath('.'))
 from args import DATA_DIR
 
 parser = argparse.ArgumentParser(description="Feature merger")
@@ -26,6 +28,7 @@ parser.add_argument(
         "tgif",
         "how2qa",
         "tvqa",
+        "star"
     ],
 )
 parser.add_argument(
@@ -42,6 +45,9 @@ files = [x for x in files if x[-4:] == ".npy"]
 # Get mapping from feature file name to dataset video_id
 if args.dataset == "msrvtt":
     mapping = {x: int(x.split(".")[0][5:]) for x in files}
+
+elif args.dataset == 'star':
+   mapping = {x:x.split('.')[0] for x in files}
 
 elif args.dataset == "msvd":
     f = open(os.path.join(DATA_DIR, "MSVD-QA", "youtube_mapping.txt"))

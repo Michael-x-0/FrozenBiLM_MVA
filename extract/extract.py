@@ -1,13 +1,16 @@
+import os
+import sys
+sys.path.append('/content/drive/MyDrive/projet_object/FrozenBiLM_MVA')
 import torch as th
 import math
 import numpy as np
 import torch.nn.functional as F
 from tqdm import tqdm
 import argparse
-from extract.video_loader import VideoLoader
+from video_loader import VideoLoader
 from torch.utils.data import DataLoader
-from extract.preprocessing import Preprocessing
-from extract.random_sequence_shuffler import RandomSequenceSampler
+from preprocessing import Preprocessing
+from random_sequence_shuffler import RandomSequenceSampler
 from args import MODEL_DIR
 import clip
 

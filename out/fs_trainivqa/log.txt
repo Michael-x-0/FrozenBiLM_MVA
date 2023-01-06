@@ -1,0 +1,1 @@
+{"train_loss": 6.553653519948323, "train_cls_loss": 6.553653519948323, "train_lr": 1.2333333333333334e-05, "val_ivqa_acc1": 0.11575, "val_ivqa_acc10": 0.326, "val_ivqa_acc_sub": 0.09659090909090909, "epoch": 0, "n_parameters": 628992}

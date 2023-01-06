@@ -19,8 +19,29 @@ class MC_Dataset(Dataset):
         type_map=None,
         prefix="",
         suffix="",
+        dataset_name = ""
     ):
-        self.data = pd.read_csv(csv_path)
+        
+        if dataset_name == "star":
+            temp_data = pd.read_json(csv_path)
+            def build_new_column(x):
+                dic = {'qid':x['question_id'],
+                    'video_id':x['video_id'],
+                    'start':x['start'],
+                    'end':x['end'],
+                    'question':x['question']}
+                if 'answer' not in x:
+                  x['answer'] = None
+                for i in range(4):
+                    dic['a'+str(i)] = x['choices'][i]['choice']
+                    if dic['a'+str(i)] == x['answer']:
+                        dic['answer_id'] = i
+                return pd.Series(dic)
+            self.data = temp_data.apply(build_new_column, axis = 1)
+            self.data['qid'] = self.data.index
+        else:
+            self.data = pd.read_csv(csv_path)
+
         if subtitles_path:
             self.subs = pickle.load(open(subtitles_path, "rb"))
         else:
@@ -180,6 +201,18 @@ def build_mc_dataset(dataset_name, split, args, tokenizer):
             raise NotImplementedError
         subtitles_path = args.tvqa_subtitles_path
         features_path = args.tvqa_features_path
+    elif dataset_name == "star":
+        if split == "train":
+            csv_path = args.star_train_json_path
+        elif split == "val":
+            csv_path = args.star_val_json_path
+        elif split == "test":
+            csv_path = args.star_test_json_path
+        else:
+            raise NotImplementedError
+        subtitles_path = None
+        features_path = args.star_features_path
+
     else:
         raise NotImplementedError
     return MC_Dataset(
@@ -193,4 +226,5 @@ def build_mc_dataset(dataset_name, split, args, tokenizer):
         prefix=args.prefix,
         suffix=args.suffix,
         type_map=type_map,
+        dataset_name = dataset_name
     )

@@ -1,0 +1,2 @@
+{"train_loss": 6.60552704334259, "train_cls_loss": 6.60552704334259, "train_lr": 1.0937500000000002e-05, "val_ivqa_acc1": 0.11175, "val_ivqa_acc10": 0.309, "val_ivqa_acc_sub": 0.09090909090909091, "epoch": 0, "n_parameters": 628992}
+{"train_loss": 6.7199589014053345, "train_cls_loss": 6.7199589014053345, "train_lr": 3.5937500000000006e-05, "val_ivqa_acc1": 0.11075, "val_ivqa_acc10": 0.3145, "val_ivqa_acc_sub": 0.08712121212121213, "epoch": 1, "n_parameters": 628992}

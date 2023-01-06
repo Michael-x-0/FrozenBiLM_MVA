@@ -16,11 +16,18 @@ name2folder = {
     "how2qa": "How2QA",
     "tvqa": "TVQA",
     "vqa": "VQA",
+    "star": "STAR"
 }
 
 
 def get_args_parser():
     parser = argparse.ArgumentParser("Set FrozenBiLM", add_help=False)
+
+    #new args
+    parser.add_argument(
+      "--data_dir",
+      default = ""
+    )
 
     # Dataset specific
     parser.add_argument(
@@ -47,6 +54,7 @@ def get_args_parser():
         "--webvid_val_csv_path",
         default=os.path.join(DATA_DIR, name2folder["webvid"], "val_captions.csv"),
     )
+   
     parser.add_argument(
         "--lsmdc_features_path",
         default=os.path.join(DATA_DIR, name2folder["lsmdc"], "clipvitl14.pth"),
@@ -183,6 +191,29 @@ def get_args_parser():
         "--tgif_vocab_path",
         default=os.path.join(DATA_DIR, name2folder["tgif"], "vocab.json"),
     )
+
+    parser.add_argument(
+        "--star_features_path",
+        default=os.path.join(DATA_DIR, name2folder["star"], "clipvitl14.pth"),
+    )
+    parser.add_argument(
+        "--star_train_json_path",
+        default=os.path.join(DATA_DIR, name2folder["star"], "train.json"),
+    )
+    parser.add_argument(
+        "--star_val_json_path",
+        default=os.path.join(DATA_DIR, name2folder["star"], "val.json"),
+    )
+    parser.add_argument(
+        "--star_test_json_path",
+        default=os.path.join(DATA_DIR, name2folder["star"], "test.json"),
+    )
+    parser.add_argument(
+        "--star_subtitles_path",
+        default=os.path.join(DATA_DIR, name2folder["star"], "subtitles.pkl"),
+    )
+
+
     parser.add_argument(
         "--how2qa_features_path",
         default=os.path.join(DATA_DIR, name2folder["how2qa"], "clipvitl14_split.pth"),

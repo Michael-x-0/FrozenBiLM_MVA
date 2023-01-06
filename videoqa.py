@@ -524,6 +524,10 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(parents=[get_args_parser()])
     args = parser.parse_args()
+    temp = vars(args)
+    for x in temp:
+      if 'path' in x:
+        temp[x] = os.path.join(temp['data_dir'],temp[x])
     if args.save_dir:
         args.save_dir = os.path.join(args.presave_dir, args.save_dir)
     args.model_name = os.path.join(os.environ["TRANSFORMERS_CACHE"], args.model_name)
